@@ -1,6 +1,8 @@
 import android.databinding.tool.ext.capitalizeUS
 import com.github.kr328.golang.GolangBuildTask
 import com.github.kr328.golang.GolangPlugin
+import java.util.Properties
+import java.io.File
 
 plugins {
     kotlin("android")
@@ -56,9 +58,27 @@ dependencies {
     implementation(libs.kotlin.serialization.json)
 }
 
+
 afterEvaluate {
+    val localProperties = Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localProperties.load(localPropertiesFile.inputStream())
+    }
+
+    val goDir = localProperties.getProperty("go.dir")
+        ?: listOf("/usr/local/go/bin", "/opt/homebrew/bin").firstOrNull { file("$it/go").exists() }
+
     tasks.withType(GolangBuildTask::class.java).forEach {
         it.inputs.dir(golangSource)
+
+        if (it is Exec) {
+            if (goDir != null) {
+                val currentPath = System.getenv("PATH") ?: ""
+                it.environment("PATH", "$goDir${File.pathSeparator}$currentPath")
+                println("Configuring PATH for ${it.name}: $goDir")
+            }
+        }
     }
 }
 
