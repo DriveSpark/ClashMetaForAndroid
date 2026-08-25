@@ -11,9 +11,9 @@ import com.github.kr328.clash.util.clashDir
 import java.io.File
 import java.io.FileOutputStream
 
-
 @Suppress("unused")
 class MainApplication : Application() {
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
 
@@ -66,6 +66,16 @@ class MainApplication : Application() {
         if (!asnFile.exists()) {
             FileOutputStream(asnFile).use {
                 assets.open("ASN.mmdb").copyTo(it)
+            }
+        }
+
+        val bundleMRSFile = File(clashDir, "BundleMRS.7z")
+        if (bundleMRSFile.exists() && bundleMRSFile.lastModified() < updateDate) {
+            bundleMRSFile.delete()
+        }
+        if (!bundleMRSFile.exists()) {
+            FileOutputStream(bundleMRSFile).use {
+                assets.open("BundleMRS.7z").copyTo(it)
             }
         }
     }

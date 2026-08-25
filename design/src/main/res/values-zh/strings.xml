@@ -78,6 +78,17 @@
     <string name="vpn_service_options">VpnService 选项</string>
     <string name="options_unavailable">选项在 Clash 运行时不可用</string>
     <string name="search">查找</string>
+    <string name="age_secret_key">Age 私钥</string>
+    <string name="age_secret_key_hint">AGE-SECRET-KEY-…（可选）</string>
+    <string name="age_secret_key_error">无效格式。密钥应以 AGE-SECRET-KEY- 开头</string>
+    <string name="age_key_helper">Age 密钥</string>
+    <string name="age_key_category">Age 密钥</string>
+    <string name="age_key_generate_summary">点击生成</string>
+    <string name="age_public_key">Age 公钥</string>
+    <string name="age_public_key_error">无效的 Age 公钥</string>
+    <string name="age_key_generate">生成</string>
+    <string name="age_key_to_public">从私钥生成</string>
+    <string name="age_key_copy">复制</string>
     <string name="system_apps">系统应用</string>
     <string name="update_time">更新时间</string>
     <string name="package_name">应用包名称</string>
@@ -262,4 +273,11 @@
     <string name="external_control_stopped">Clash.Meta 服务已停止</string>
     <string name="import_from_qr_no_permission">相机权限受限，请前往设置开启。</string>
     <string name="import_from_qr_exception">发生系统未知异常，操作失败。</string>
+
+    <string name="shortcut_toggle_short">切换 Clash</string>
+    <string name="shortcut_toggle_long">切换 Clash 服务启停</string>
+    <string name="shortcut_start_short">启动 Clash</string>
+    <string name="shortcut_start_long">启动 Clash 服务</string>
+    <string name="shortcut_stop_short">停止 Clash</string>
+    <string name="shortcut_stop_long">停止 Clash 服务</string>
 </resources>
